@@ -23,9 +23,8 @@ app.use('/auth',authRoutes);
 const profileRoutes = require('./routes/profile-routes');
 app.use('/profile',profileRoutes);
 
-app.get('/home',(req,res)=>{
-  console.log(req.user);
-  res.render('home.ejs');
+app.get('/',(req,res)=>{
+  res.render('home.ejs',{user:req.user});
 });
 
 const port = require('./config/server-config.js').port;

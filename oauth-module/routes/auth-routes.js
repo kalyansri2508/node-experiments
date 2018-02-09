@@ -2,12 +2,12 @@ const router = require('express').Router();
 const passport = require('passport');
 
 router.get('/login',(req,res)=>{
-    res.render('login.ejs');
+    res.render('login.ejs',{user:req.user});
 });
 
 router.get('/logout',(req,res)=>{
     req.logout();
-    res.redirect('/home');
+    res.redirect('/');
 });
 
 router.get('/google',passport.authenticate('google',{
