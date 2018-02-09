@@ -1,12 +1,15 @@
 const express = require('express');
-const app = express();
+const mongoose = require('mongoose');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
+const keys = require('./config/keys.js');
 
+const app = express();
+mongoose.connect(keys.MONGO_DB_URL);
 app.set('view engine', 'ejs');
 app.use('/public',express.static('./public'));
 
-const keys = require('./config/keys.js');
+
 app.use(cookieSession({
   name: 'session',
   keys: [keys.MY_SECRET],
